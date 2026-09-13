@@ -4,42 +4,116 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Carolina Pest Defense | AI Receptionist Demo</title>
+
 <script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async></script>
+
 <style>
 :root{--bg:#07120f;--card:#10221c;--line:#294039;--text:#f4f7f5;--muted:#b7c4bf;--green:#37d39a}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);background:radial-gradient(circle at 20% 0,#123d2e 0,transparent 35%),linear-gradient(145deg,#07120f,#0d1d18);min-height:100vh}.wrap{width:min(1080px,calc(100% - 32px));margin:auto}header{padding:22px 0;border-bottom:1px solid #ffffff12}.nav{display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800;font-size:18px}.brand span{color:var(--green)}.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:99px}
-.hero{text-align:center;padding:75px 0 38px}.eyebrow{color:var(--green);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.hero h1{font-size:clamp(44px,7vw,76px);line-height:.98;letter-spacing:-.055em;max-width:850px;margin:18px auto}.hero p{max-width:700px;margin:auto;color:var(--muted);font-size:18px;line-height:1.65}
-.voice{max-width:760px;margin:25px auto 80px;padding:30px;border:1px solid var(--line);border-radius:28px;background:#ffffff0b;box-shadow:0 25px 70px #0008}.voice h2{margin:0 0 8px;font-size:29px}.voice>p{color:var(--muted);margin:0 0 22px}.widget{min-height:145px;display:flex;justify-content:center;align-items:center}
-section.features{padding-bottom:80px}.title{text-align:center;margin-bottom:30px}.title h2,.cta h2{font-size:38px;letter-spacing:-.04em;margin:0 0 10px}.title p,.cta p{color:var(--muted);line-height:1.6}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{padding:23px;border:1px solid var(--line);border-radius:20px;background:#ffffff09}.icon{font-size:27px}.card h3{margin:15px 0 7px}.card p{color:var(--muted);font-size:14px;line-height:1.55;margin:0}.cta{text-align:center;margin-bottom:70px;padding:45px;border:1px solid var(--line);border-radius:28px;background:#37d39a14}.cta p{max-width:650px;margin:0 auto 22px}.cta a{display:inline-block;background:var(--green);color:#06120e;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:12px}footer{text-align:center;color:#81908a;font-size:12px;line-height:1.6;border-top:1px solid #ffffff10;padding:28px 15px 36px}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.grid{grid-template-columns:1fr}.hero{padding-top:52px}.voice,.cta{padding:24px}.hero h1{font-size:48px}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);background:radial-gradient(circle at 20% 0,#123d2e 0,transparent 35%),linear-gradient(145deg,#07120f,#0d1d18);min-height:100vh}
+.wrap{width:min(1080px,calc(100% - 32px));margin:auto}
+header{padding:22px 0;border-bottom:1px solid #ffffff12}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.brand{font-weight:800;font-size:18px}
+.brand span{color:var(--green)}
+.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:99px}
+.hero{text-align:center;padding:75px 0 38px}
+.eyebrow{color:var(--green);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.hero h1{font-size:clamp(44px,7vw,76px);line-height:.98;letter-spacing:-.055em;max-width:850px;margin:18px auto}
+.hero p{max-width:700px;margin:auto;color:var(--muted);font-size:18px;line-height:1.65}
+
+.voice{max-width:760px;margin:25px auto 80px;padding:34px;border:1px solid var(--line);border-radius:28px;background:#ffffff0b;box-shadow:0 25px 70px #0008;text-align:center}
+.voice h2{margin:0 0 10px;font-size:31px}
+.voice>p{color:var(--muted);line-height:1.6;margin:0 auto 22px;max-width:600px}
+.launch-note{display:inline-block;margin-top:8px;padding:14px 18px;border:1px solid #37d39a55;border-radius:14px;background:#37d39a12;color:#e7fff5;font-weight:700}
+.launch-note strong{color:var(--green)}
+.voice-small{font-size:13px;color:#8fa19a;margin-top:15px}
+
+section.features{padding-bottom:80px}
+.title{text-align:center;margin-bottom:30px}
+.title h2,.cta h2{font-size:38px;letter-spacing:-.04em;margin:0 0 10px}
+.title p,.cta p{color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card{padding:23px;border:1px solid var(--line);border-radius:20px;background:#ffffff09}
+.icon{font-size:27px}
+.card h3{margin:15px 0 7px}
+.card p{color:var(--muted);font-size:14px;line-height:1.55;margin:0}
+
+.cta{text-align:center;margin-bottom:70px;padding:45px;border:1px solid var(--line);border-radius:28px;background:#37d39a14}
+.cta p{max-width:650px;margin:0 auto 22px}
+.cta a{display:inline-block;background:var(--green);color:#06120e;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:12px}
+footer{text-align:center;color:#81908a;font-size:12px;line-height:1.6;border-top:1px solid #ffffff10;padding:28px 15px 36px}
+
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}.hero{padding-top:52px}.voice,.cta{padding:24px}.hero h1{font-size:48px}}
 </style>
 </head>
+
 <body>
-<header><div class="wrap nav"><div class="brand">Carolina <span>Pest Defense</span></div><div class="tag">AI Receptionist Demo</div></div></header>
+<header>
+  <div class="wrap nav">
+    <div class="brand">Carolina <span>Pest Defense</span></div>
+    <div class="tag">AI Receptionist Demo</div>
+  </div>
+</header>
+
 <main>
 <section class="hero wrap">
-<div class="eyebrow">See the technology in action</div>
-<h1>Pest problems don't wait. Neither should your customers.</h1>
-<p>Meet Savannah, an AI receptionist demonstration built for a pest-control business. She can answer common questions, understand a customer's problem, collect lead information, and help direct the caller toward the next step.</p>
+  <div class="eyebrow">See the technology in action</div>
+  <h1>Pest problems don't wait. Neither should your customers.</h1>
+  <p>Meet Savannah, an AI receptionist demonstration built for a pest-control business. She can answer common questions, understand a customer's problem, collect lead information, and help direct the caller toward the next step.</p>
 </section>
+
 <section class="voice">
-<h2>🎙️ Talk to Savannah</h2>
-<p>Try the AI receptionist yourself. Ask about pests, service, pricing, inspections, or tell her about a pest problem.</p>
-<div class="widget">
-<vapi-widget public-key="2d50143b-0c3b-4a09-aa1a-faaf09714bc5" assistant-id="68692a8b-07f8-441f-ace8-e0c6e0db0918" mode="voice" theme="dark" size="full" radius="large" base-color="#10221c" accent-color="#37d39a" button-base-color="#37d39a" button-accent-color="#06120e" main-label="Talk to Savannah" start-button-text="Start Voice Demo" end-button-text="End Call" empty-voice-message="Click below to start a conversation with Savannah." show-transcript="true"></vapi-widget>
-</div>
+  <h2>🎙️ Talk to Savannah</h2>
+  <p>Want to try the AI receptionist? Savannah can answer common pest-control questions and have a natural conversation about a customer's problem.</p>
+  <div class="launch-note">Click the green <strong>Talk to Savannah</strong> button in the <strong>bottom-right corner</strong> to start.</div>
+  <div class="voice-small">Allow microphone access when your browser asks.</div>
 </section>
+
 <section class="features wrap">
-<div class="title"><h2>What Savannah can handle</h2><p>This is the kind of AI receptionist experience a pest-control company could add to its website or phone workflow.</p></div>
-<div class="grid">
-<div class="card"><div class="icon">🐜</div><h3>Pest Inquiries</h3><p>Understand what the customer is dealing with and collect relevant details.</p></div>
-<div class="card"><div class="icon">📞</div><h3>Customer Questions</h3><p>Answer common questions about services, inspections, pests, and next steps.</p></div>
-<div class="card"><div class="icon">📋</div><h3>Lead Capture</h3><p>Collect names, contact information, service locations, and problem details.</p></div>
-<div class="card"><div class="icon">🌙</div><h3>After-Hours Help</h3><p>Give customers a way to get information and submit an inquiry when staff aren't available.</p></div>
-</div>
+  <div class="title">
+    <h2>What Savannah can handle</h2>
+    <p>This is the kind of AI receptionist experience a pest-control company could add to its website or phone workflow.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="icon">🐜</div><h3>Pest Inquiries</h3><p>Understand what the customer is dealing with and collect relevant details.</p></div>
+    <div class="card"><div class="icon">📞</div><h3>Customer Questions</h3><p>Answer common questions about services, inspections, pests, and next steps.</p></div>
+    <div class="card"><div class="icon">📋</div><h3>Lead Capture</h3><p>Collect names, contact information, service locations, and problem details.</p></div>
+    <div class="card"><div class="icon">🌙</div><h3>After-Hours Help</h3><p>Give customers a way to get information and submit an inquiry when staff aren't available.</p></div>
+  </div>
 </section>
-<section class="cta wrap"><h2>Imagine this on your business.</h2><p>Valentine's Services builds practical AI voice assistants, lead-capture systems, websites, and other digital tools for small businesses.</p><a href="mailto:valentinesservices@yahoo.com?subject=Pest%20Control%20AI%20Demo">Request a Demo</a></section>
+
+<section class="cta wrap">
+  <h2>Imagine this on your business.</h2>
+  <p>Valentine's Services builds practical AI voice assistants, lead-capture systems, websites, and other digital tools for small businesses.</p>
+  <a href="mailto:valentinesservices@yahoo.com?subject=Pest%20Control%20AI%20Demo">Request a Demo</a>
+</section>
 </main>
-<footer>Demonstration website created by Valentine's Services.<br>Carolina Pest Defense is a fictional demonstration company and is not represented as a Valentine's Services client.</footer>
+
+<!-- Vapi floating voice widget -->
+<vapi-widget
+  public-key="2d50143b-0c3b-4a09-aa1a-faaf09714bc5"
+  assistant-id="68692a8b-07f8-441f-ace8-e0c6e0db0918"
+  mode="voice"
+  theme="dark"
+  size="compact"
+  radius="large"
+  position="bottom-right"
+  base-color="#10221c"
+  accent-color="#37d39a"
+  button-base-color="#37d39a"
+  button-accent-color="#06120e"
+  main-label="Talk to Savannah"
+  start-button-text="Start Voice Demo"
+  end-button-text="End Call"
+  empty-voice-message="Click to start a voice conversation."
+  show-transcript="true">
+</vapi-widget>
+
+<footer>
+  Demonstration website created by Valentine's Services.<br>
+  Carolina Pest Defense is a fictional demonstration company and is not represented as a Valentine's Services client.
+</footer>
 </body>
 </html>
