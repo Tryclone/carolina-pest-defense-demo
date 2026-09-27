@@ -554,6 +554,130 @@ footer{
   }
 
 }
+/* =========================
+   PEST LEAD FORM
+   ========================= */
+
+.lead-section{
+  max-width:760px;
+  margin:25px auto 80px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:#ffffff0b;
+  box-shadow:0 25px 70px #0008;
+}
+
+.lead-section h2{
+  margin:0 0 8px;
+  font-size:29px;
+}
+
+.lead-section > p{
+  color:var(--muted);
+  margin:0 0 24px;
+  line-height:1.6;
+}
+
+.lead-form{
+  display:grid;
+  gap:16px;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.form-group label{
+  font-size:13px;
+  font-weight:800;
+  color:var(--text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:#07120f;
+  color:var(--text);
+  font:inherit;
+  outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px #37d39a22;
+}
+
+.form-group textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+.form-submit{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:15px 20px;
+  background:var(--green);
+  color:var(--green-dark);
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.18s ease;
+}
+
+.form-submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px #0006;
+}
+
+.form-submit:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+  transform:none;
+}
+
+.form-success{
+  display:none;
+  margin-top:18px;
+  padding:15px;
+  border:1px solid var(--green);
+  border-radius:12px;
+  background:#37d39a14;
+  color:var(--text);
+  line-height:1.5;
+}
+
+.form-note{
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:12px;
+}
+
+@media(max-width:600px){
+  .lead-section{
+    padding:24px;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+  }
+}
 
 </style>
 </head>
@@ -795,23 +919,165 @@ footer{
      CTA
      ========================= -->
 
-<section class="cta wrap">
+<!-- =========================
+     PEST LEAD CAPTURE
+     ========================= -->
+
+<section class="lead-section wrap" id="request">
 
   <h2>
-    Imagine this on your business.
+    🐜 Request Pest Control Service
   </h2>
 
   <p>
-    Valentine's Services builds practical AI voice assistants,
-    lead-capture systems, websites, and other digital tools
-    for small businesses.
+    Tell Savannah what you're dealing with and we'll show you
+    how an AI receptionist could capture and organize this
+    information automatically.
   </p>
 
-  <a
-    href="mailto:valentinesservices@yahoo.com?subject=Pest%20Control%20AI%20Demo"
+  <form id="pest-lead-form" class="lead-form">
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label for="lead-name">Name *</label>
+        <input
+          id="lead-name"
+          name="name"
+          type="text"
+          placeholder="Your name"
+          required
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="lead-phone">Phone *</label>
+        <input
+          id="lead-phone"
+          name="phone"
+          type="tel"
+          placeholder="(555) 555-5555"
+          required
+        >
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <label for="lead-email">Email</label>
+      <input
+        id="lead-email"
+        name="email"
+        type="email"
+        placeholder="you@example.com"
+      >
+    </div>
+
+
+    <div class="form-group">
+      <label for="lead-address">Service Address *</label>
+      <input
+        id="lead-address"
+        name="address"
+        type="text"
+        placeholder="Street address, city, ZIP"
+        required
+      >
+    </div>
+
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label for="lead-property">Property Type *</label>
+        <select id="lead-property" name="propertyType" required>
+          <option value="">Select one</option>
+          <option value="Residential">Residential</option>
+          <option value="Commercial">Commercial</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="lead-pest">Pest Problem *</label>
+        <select id="lead-pest" name="pestType" required>
+          <option value="">Select one</option>
+          <option value="Ants">Ants</option>
+          <option value="Roaches">Roaches</option>
+          <option value="Rodents">Rodents / Mice / Rats</option>
+          <option value="Termites">Termites</option>
+          <option value="Mosquitoes">Mosquitoes</option>
+          <option value="Bed Bugs">Bed Bugs</option>
+          <option value="Wasps / Stinging Insects">Wasps / Stinging Insects</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+    </div>
+
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label for="lead-service">What do you need? *</label>
+        <select id="lead-service" name="serviceNeeded" required>
+          <option value="">Select one</option>
+          <option value="Inspection">Inspection</option>
+          <option value="One-Time Treatment">One-Time Treatment</option>
+          <option value="Recurring Pest Control">Recurring Pest Control</option>
+          <option value="Emergency / Priority Service">Emergency / Priority Service</option>
+          <option value="Not Sure">Not Sure</option>
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="lead-urgency">How soon do you need help? *</label>
+        <select id="lead-urgency" name="urgency" required>
+          <option value="">Select one</option>
+          <option value="ASAP">ASAP</option>
+          <option value="Within a Few Days">Within a Few Days</option>
+          <option value="This Week">This Week</option>
+          <option value="Just Getting Information">Just Getting Information</option>
+        </select>
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <label for="lead-details">Tell us a little more</label>
+      <textarea
+        id="lead-details"
+        name="details"
+        placeholder="Where are you seeing the pests? How long has the problem been happening?"
+      ></textarea>
+    </div>
+
+
+    <button
+      type="submit"
+      id="pest-submit-button"
+      class="form-submit"
+    >
+      🐜 SEND SERVICE REQUEST
+    </button>
+
+  </form>
+
+
+  <div
+    id="pest-form-success"
+    class="form-success"
   >
-    Request a Demo
-  </a>
+    ✅ Thanks! Your service request has been received.
+    Someone will follow up with you soon.
+  </div>
+
+  <div class="form-note">
+    This is a demonstration lead-capture form for the Carolina Pest Defense demo.
+  </div>
 
 </section>
 
@@ -833,7 +1099,107 @@ footer{
 
 </footer>
 
+<script>
+  const pestLeadForm = document.getElementById("pest-lead-form");
+  const pestSubmitButton = document.getElementById("pest-submit-button");
+  const pestFormSuccess = document.getElementById("pest-form-success");
 
+  pestLeadForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    pestSubmitButton.disabled = true;
+    pestSubmitButton.textContent = "SENDING...";
+
+    const data = {
+      leadType: "PEST CONTROL DEMO LEAD",
+
+      name: document.getElementById("lead-name").value.trim(),
+
+      phone: document.getElementById("lead-phone").value.trim(),
+
+      email: document.getElementById("lead-email").value.trim(),
+
+      address: document.getElementById("lead-address").value.trim(),
+
+      propertyType:
+        document.getElementById("lead-property").value,
+
+      pestType:
+        document.getElementById("lead-pest").value,
+
+      serviceNeeded:
+        document.getElementById("lead-service").value,
+
+      urgency:
+        document.getElementById("lead-urgency").value,
+
+      details:
+        document.getElementById("lead-details").value.trim(),
+
+      timestamp: new Date().toLocaleString()
+    };
+
+
+    try {
+
+      const response = await fetch(
+        "/.netlify/functions/send-telegram",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify(data)
+        }
+      );
+
+
+      if (!response.ok) {
+        throw new Error("Telegram notification failed.");
+      }
+
+
+      const result = await response.json();
+
+
+      if (!result.success) {
+        throw new Error("Telegram notification failed.");
+      }
+
+
+      pestFormSuccess.style.display = "block";
+
+      pestFormSuccess.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+
+
+      pestLeadForm.reset();
+
+
+    } catch (error) {
+
+      console.error("Telegram error:", error);
+
+      alert(
+        "The service request could not be sent. Please try again."
+      );
+
+
+    } finally {
+
+      pestSubmitButton.disabled = false;
+
+      pestSubmitButton.textContent =
+        "🐜 SEND SERVICE REQUEST";
+
+    }
+
+  });
+</script>
 
 <!-- =========================
      VAPI WEB SDK
