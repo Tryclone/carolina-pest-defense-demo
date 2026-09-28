@@ -1,3 +1,12 @@
+export const config = {
+  path: "/.netlify/functions/send-telegram",
+  rateLimit: {
+    windowLimit: 10,
+    windowSize: 60,
+    aggregateBy: ["ip", "domain"],
+  },
+};
+
 export default async (req) => {
   try {
     if (req.method !== "POST") {
